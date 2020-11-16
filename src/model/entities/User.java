@@ -1,0 +1,134 @@
+package model.entities;
+
+import java.io.Serializable;
+
+public class User implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	
+	private Integer id;
+	private String name;
+	private String senha;
+	private String name_user;
+	private String email;
+	private String rua;
+	private String complemento;
+	private Integer numero;
+	
+	public User () {
+		
+	}
+
+	
+
+	public User(Integer id, String name, String senha, String name_user, String email, String rua, String complemento, Integer numero) {
+
+		this.id = id;
+		this.name = name;
+		this.senha = senha;
+		this.name_user = name_user;
+		this.email = email;
+		this.rua = rua;
+		this.complemento = complemento;
+		this.numero = numero;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public String getName_user() {
+		return name_user;
+	}
+
+	public void setName_user(String name_user) {
+		this.name_user = name_user;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	public String getRua() {
+		return rua;
+	}
+
+	public void setRua(String rua) {
+		this.rua = rua;
+	}
+
+	public String getComplemento() {
+		return complemento;
+	}
+
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
+	}
+
+	public Integer getNumero() {
+		return numero;
+	}
+
+	public void setNumero(Integer numero) {
+		this.numero = numero;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", senha=" + senha + ", name_user=" + name_user + ", email="
+				+ email + ", rua=" + rua + ", complemento=" + complemento + ", numero=" + numero + "]";
+	}
+
+	
+	
+	
+}
