@@ -104,9 +104,12 @@ public class AdminFormController implements Initializable {
     private boolean verification() {
     	
     	if(dao.findByName(txtName_User.getText())) {
-			
-			Alerts.showAlert("Error saving object", null, "Usuário ja esta cadastrado!\n Escolha um diferente!", AlertType.INFORMATION);
-			return true;
+    		if(txtId.getText().equals(String.valueOf(entity.getId()))) {
+    			return false;
+    		}else {
+    			Alerts.showAlert("Error saving object", null, "Usuário ja esta cadastrado!\n Escolha um diferente!", AlertType.INFORMATION);
+    			return true;
+    		}
     	}else {
 			return false;
 		}
@@ -115,9 +118,12 @@ public class AdminFormController implements Initializable {
     private boolean verification2() {
     	
     	if(dao2.findByName(txtName_User.getText())) {
-			
-			Alerts.showAlert("Error saving object", null, "Usuário ja esta cadastrado!\n Escolha um diferente!", AlertType.INFORMATION);
-			return true;
+    		if(txtId.getText().equals(String.valueOf(entity.getId()))) {
+    			return false;
+    		}else {
+    			Alerts.showAlert("Error saving object", null, "Usuário ja esta cadastrado!\n Escolha um diferente!", AlertType.INFORMATION);
+				return true;
+    		}
 		}else {
 			return false;
 		}

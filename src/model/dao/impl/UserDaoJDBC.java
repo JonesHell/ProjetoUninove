@@ -58,6 +58,41 @@ public class UserDaoJDBC implements UserDao{
 	}
 	
 	@Override
+	public User findByNameUser(String login) {
+		PreparedStatement st = null;
+		ResultSet rs = null;
+		try {
+			st = conn.prepareStatement(
+				"SELECT * FROM cliente WHERE Id = ?");
+			st.setString(1, login);
+			
+			rs = st.executeQuery();
+			
+			if (rs.next()) {
+				User obj = new User();
+				obj.setId(rs.getInt("Id"));
+				obj.setName(rs.getString("name"));
+				obj.setName_user(rs.getString("name_user"));
+				obj.setSenha(rs.getString("senha"));
+				obj.setEmail(rs.getString("email"));
+				obj.setRua(rs.getString("rua"));
+				obj.setNumero(rs.getInt("numero"));
+				obj.setComplemento(rs.getString("complemento"));
+				
+				return obj;
+			}
+			return null;
+		}
+		catch (SQLException e) {
+			throw new DbException(e.getMessage());
+		}
+		finally {
+			DB.closeStatement(st);
+			DB.closeResultSet(rs);
+		}
+	}
+	
+	@Override
 	public boolean findByName(String name) {
 		PreparedStatement st = null;
 		ResultSet rs = null;

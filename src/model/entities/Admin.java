@@ -80,7 +80,7 @@ public class Admin implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Admin [id=" + id + ", name=" + name + ", name_user=" + name_user + ", senha=" + senha + "]";
+		return name_user;
 	}
 	
 	

@@ -14,6 +14,10 @@ public class AdminService {
 		return dao.findAll();
 	}
 	
+	public List<Admin> findAllNameUser(){
+		return dao.findAllNameUser();
+	}
+	
 	public void saveOrUpdate(Admin obj) {
 		if(obj.getId() == null) {
 			dao.insert(obj);

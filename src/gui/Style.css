@@ -1,0 +1,14 @@
+@charset "ISO-8859-1";
+
+.label {
+    -fx-border-color: #ff0000;
+}
+
+.button{
+	-fx-font-family: "Times new Roman" , Georgia, Serif;
+	-fx-font-size: 11pt;
+}
+
+.text-fiel{
+	fx-background-color: #ffff33;
+}

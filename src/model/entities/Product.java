@@ -10,16 +10,20 @@ public class Product implements Serializable {
 	private String name;
 	private Double price;
 	private Integer tipo;
+	private Integer Qtd;
 	
 	private Type type;
 	private Admin adm;
+	private ClientOrder order;
+	private User client;
 
 	public Product() {
 	}
 	
-	public Product(String name, Double price) {
+	public Product(String name, Double price, Integer tipo) {
 		this.name = name;
 		this.price = price;	
+		this.tipo = tipo;
 	}
 	
 	public Product(Integer id, String name, Double price, Type type, Admin adm) {
@@ -29,6 +33,12 @@ public class Product implements Serializable {
 		this.price = price;
 		this.type = type;
 		this.adm = adm;
+	}
+	
+	public Product(String name, Double price, ClientOrder order) {
+		this.name = name;
+		this.price = price;	
+		this.order = order;
 	}
 	
 	public Integer getId() {
@@ -77,6 +87,26 @@ public class Product implements Serializable {
 	
 	public Integer getTipo() {
 		return tipo;
+	}
+	
+	public ClientOrder getOrder() {
+		return order;
+	}
+
+	public void setOrder(ClientOrder order) {
+		this.order = order;
+	}
+	
+	public Integer getQtd() {
+		return Qtd;
+	}
+	
+	public void setQtd(Integer qtd) {
+		this.Qtd = qtd;
+	}
+	
+	public User getCliente() {
+		return client;
 	}
 	
 	@Override

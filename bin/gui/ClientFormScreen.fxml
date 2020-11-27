@@ -76,7 +76,7 @@
                </padding>
             </HBox>
             <TextField fx:id="txtId" maxHeight="0.0" maxWidth="0.0" minHeight="0.0" prefHeight="0.0" prefWidth="0.0" promptText="Auto incrementado!" GridPane.columnIndex="1" />
-            <Label fx:id="labelErrorName" textFill="RED" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Label fx:id="labelErrorNameUser" textFill="RED" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <Label fx:id="labelErrorSenha" textFill="RED" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <Label fx:id="labelErrorName" textFill="RED" GridPane.columnIndex="2" GridPane.rowIndex="3" />
             <Label fx:id="labelErrorEmail" textFill="RED" GridPane.columnIndex="2" GridPane.rowIndex="4" />

@@ -63,13 +63,13 @@ public class ProductDaoJDBC implements ProductDao {
 			DB.closeStatement(st);
 		}
 	}
-
+	
 	@Override
 	public void update(Product obj) {
 		PreparedStatement st = null;
 		try {
 			st = conn.prepareStatement(
-					"UPDATE produtos SET Name = ?, Price = ?, Name_tipo = ? , Id_admin = ? WHERE Id = ?");
+					"UPDATE produtos SET Name = ?, Price = ?, Id_tipo = ? , Id_admin = ? WHERE Id = ?");
 			
 			st.setString(1, obj.getName());
 			st.setDouble(2, obj.getPrice());
@@ -80,6 +80,7 @@ public class ProductDaoJDBC implements ProductDao {
 			st.executeUpdate();
 		}
 		catch (SQLException e) {
+			e.printStackTrace();
 			throw new DbException(e.getMessage());
 		}
 		finally {
@@ -113,6 +114,31 @@ public class ProductDaoJDBC implements ProductDao {
 			st = conn.prepareStatement("SELECT * FROM produtos WHERE Id = ?");
 			
 			st.setInt(1, id);
+			rs = st.executeQuery();
+			if (rs.next()) {
+				Type tp = instantiateType(rs);
+				Admin adm = instantiateAdmin(rs);
+				Product obj = instantiateProduct(rs, tp, adm);
+				return obj;
+			}
+			return null;
+		}
+		catch (SQLException e) {
+			throw new DbException(e.getMessage());
+		}
+		finally {
+			DB.closeStatement(st);
+			DB.closeResultSet(rs);
+		}
+	}
+	
+	@Override
+	public Product ProductType() {
+		PreparedStatement st = null;
+		ResultSet rs = null;
+		try {
+			st = conn.prepareStatement("SELECT produtos.Id, produtos.Name, produtos.Price, tipo.Id, tipo.tipo FROM tipo JOIN produtos ON tipo.Id = produtos.Id_tipo");
+			
 			rs = st.executeQuery();
 			if (rs.next()) {
 				Type tp = instantiateType(rs);

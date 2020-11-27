@@ -2,7 +2,7 @@ package model.entities;
 
 import java.io.Serializable;
 
-public class ClientOrder implements Serializable {
+public class ClientOrder extends Product implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -17,7 +17,6 @@ public class ClientOrder implements Serializable {
 	}
 	
 	public ClientOrder(Integer id, Integer qtd, User cliente, Product pd) {
-
 		this.id = id;
 		this.qtd = qtd;
 		this.cliente = cliente;
@@ -33,7 +32,7 @@ public class ClientOrder implements Serializable {
 	}
 
 	public Integer getQtd() {
-		return qtd;
+		return pd.getQtd();
 	}
 
 	public void setQtd(Integer qtd) {

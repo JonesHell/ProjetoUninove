@@ -148,7 +148,14 @@ public class ProductFormController implements Initializable {
 		}
 		obj.setPrice(Utils.tryParsetoDouble(txtPrice.getText()));
 		
+		if(comboBoxType == null) {
+			exception.addError("type", "Field can't be empty");
+		}
 		obj.setType(comboBoxType.getValue());
+		
+		if(comboBoxType == null) {
+			exception.addError("admin", "Field can't be empty");
+		}
 		obj.setAdm(comboBoxAdmin.getValue());
 		
 		if (exception.getErrors().size() > 0) {
@@ -185,19 +192,23 @@ public class ProductFormController implements Initializable {
 		if(entity.getType() == null) {
 			comboBoxType.getSelectionModel().selectFirst();
 		}else {
-			comboBoxType.setValue(entity.getType());
+			comboBoxAdmin.getSelectionModel().isEmpty();
 		}
 		
 		if(entity.getAdm() == null) {
 			comboBoxAdmin.getSelectionModel().selectFirst();
 		}else {
-			comboBoxAdmin.setValue(entity.getAdm());
+			comboBoxAdmin.getSelectionModel().isEmpty();
 		}
 	}
 
 	public void loadAssociatedObjects() {		
 		if(admService == null ) {
 			throw new IllegalStateException("AdmService was null");
+		}
+		
+		if(typeService == null) {
+			throw new IllegalStateException("TypeService was null");
 		}
 		
 		List<Type> list = typeService.findAll();

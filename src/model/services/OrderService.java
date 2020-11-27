@@ -25,4 +25,20 @@ public class OrderService {
 	public void remove(ClientOrder obj) {
 		dao.deleteById(obj.getid());
 	}
+	
+	public ClientOrder findById(Integer Id) {
+		return dao.findById(Id);
+	}
+	
+	public Double orderSum(int Id) {
+		return dao.OrderSum(Id);
+	}
+	
+	public Integer orderIdClient(String login) {
+		return dao.OrderIdClient(login);
+	}
+	
+	public void deleteByPedido(int Id) {
+		dao.deleteByPedido(Id);
+	}
 }

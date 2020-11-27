@@ -24,6 +24,7 @@ public class MainScreenController {
     @FXML private MenuItem menuItemProducts;
     @FXML private MenuItem menuItemAbout;
     @FXML private MenuItem menuItemClient;
+    @FXML private MenuItem menuItemDeslog;
 
     @FXML
     void onMenuItemAboutAction(ActionEvent event) {
@@ -53,7 +54,11 @@ public class MainScreenController {
 			controller.updateTableView();
 		});
     }
-    
+
+    @FXML 
+    void onMenuItemDeslogACtion(ActionEvent event) {
+    	Main.ChangeScreen("login");
+    }
     private synchronized <T> void loadview(String absoluteName, Consumer <T> initializingAction) {
 		
 		try {

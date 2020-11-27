@@ -217,13 +217,15 @@ public class ClientFormController implements Initializable {
 
 		labelErrorName.setText((fields.contains("name") ? errors.get("name") : ""));
 		
-		labelErrorNameUser.setText((fields.contains("name_user") ? errors.get("name_user") : ""));
-		
 		labelErrorSenha.setText((fields.contains("senha") ? errors.get("senha") : ""));
 		
 		labelErrorEmail.setText((fields.contains("email") ? errors.get("email") : ""));
 		
 		labelErrorRua.setText((fields.contains("rua") ? errors.get("rua") : ""));
+		
+		labelErrorNumero.setText((fields.contains("numero") ? errors.get("numero") : ""));
+		
+		labelErrorNameUser.setText((fields.contains("name_user") ? errors.get("name_user") : ""));
 		
 	}
 }

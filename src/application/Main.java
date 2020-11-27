@@ -16,7 +16,9 @@ public class Main extends Application {
 	private static Scene loginScene;
 	private static Stage stage;
 	private static Scene form;
-	private static Scene mainuser;
+	private static Scene mainUser;
+	private static Scene Lanche;
+	private static Scene Finally;
 	
 	@Override
 	public void start(Stage primaryStage) {
@@ -30,16 +32,27 @@ public class Main extends Application {
 			Parent LoginFormfxml = FXMLLoader.load(getClass().getResource("/gui/LoginFormScreen.fxml"));
 			form = new Scene(LoginFormfxml);
 			
+			Parent LancheFXML = FXMLLoader.load(getClass().getResource("/gui/LancheScreen.fxml"));
+			Lanche = new Scene(LancheFXML);
+			
+			Parent FinallyFXML = FXMLLoader.load(getClass().getResource("/gui/FinallyScreen.fxml"));
+			Finally = new Scene(FinallyFXML);
+			
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/MainScreen.fxml"));
 			ScrollPane scrollPane = loader.load();
 			
-			Parent mainp = FXMLLoader.load(getClass().getResource("/gui/MainScreenUsuario.fxml"));
-			mainuser = new Scene(mainp);
+			FXMLLoader loaderUser = new FXMLLoader(getClass().getResource("/gui/MainScreenUser.fxml"));
+			ScrollPane scrollPaneUser = loaderUser.load();
+			
 			
 			scrollPane.setFitToHeight(true);
 			scrollPane.setFitToWidth(true);
 			
+			scrollPaneUser.setFitToHeight(true);
+			scrollPaneUser.setFitToWidth(true);
+			
 			mainScene = new Scene(scrollPane);
+			mainUser = new Scene(scrollPaneUser);
 		
 			primaryStage.setTitle("FoodProject application");
 			primaryStage.show();
@@ -69,7 +82,15 @@ public class Main extends Application {
 			break;
 			
 			case "mainp":
-				stage.setScene(mainuser);
+				stage.setScene(mainUser);
+			break;
+			
+			case "Lanche":
+				stage.setScene(Lanche);
+			break;
+			
+			case "finally":
+				stage.setScene(Finally);
 			break;
 		}	
 	}

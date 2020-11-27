@@ -106,7 +106,34 @@ public class AdminDaoJDBC implements AdminDao{
 				DB.closeResultSet(rs);
 			}
 		}
+		
+		@Override
+		public List<Admin> findAllNameUser() {
+			PreparedStatement st = null;
+			ResultSet rs = null;
+			try {
+				st = conn.prepareStatement(
+					"SELECT * FROM admin ORDER BY Id");
+				rs = st.executeQuery();
 
+				List<Admin> list = new ArrayList<>();
+
+				while (rs.next()) {
+					Admin obj = new Admin();
+					obj.setName_user(rs.getString("name_user"));
+					list.add(obj);
+				}
+				return list;
+			}
+			catch (SQLException e) {
+				throw new DbException(e.getMessage());
+			}
+			finally {
+				DB.closeStatement(st);
+				DB.closeResultSet(rs);
+			}
+		}
+		
 		@Override
 		public void insert(Admin obj) {
 			PreparedStatement st = null;

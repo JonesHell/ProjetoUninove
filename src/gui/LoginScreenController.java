@@ -33,22 +33,31 @@ public class LoginScreenController {
 
 	@FXML
 	private PasswordField tfSenha;
-
-	//private ObservableList<User> obsList;
+	
+	public static String saveLogin;
+ 
 
 	@FXML
 	void onBtAcessarAction(ActionEvent event) {
 
 		if (checkAdmin(tfUsuario.getText(), tfSenha.getText())) {
+			
 			Main.ChangeScreen("main");
-
+			saveLogin = tfUsuario.getText();
+			tfUsuario.setText(null);
+			tfSenha.setText(null);
+			
 		} else if (checkLogin(tfUsuario.getText(), tfSenha.getText())) {
-
+			
 			Main.ChangeScreen("mainp");
+			saveLogin = tfUsuario.getText();
+			tfUsuario.setText(null);
+			tfSenha.setText(null);
 			
 		} else {
 			Alerts.showAlert("Login", null, "Login Failed", AlertType.INFORMATION);
 		}
+		
 	}
 
 	@FXML
@@ -89,24 +98,7 @@ public class LoginScreenController {
 
 	}
 	
-	/*
-	@Override
-	public void onDataChanged() {
-		updateTableView();
-	}
-
-	public void updateTableView() {
-		if (service == null) {
-			throw new IllegalStateException("Service was null");
-		}
-		List<User> list = service.findAll();
-		obsList = FXCollections.observableArrayList(list);
-
-	}
-
-	*/
-	
-	public boolean checkLogin(String name_user, String senha) {
+	private boolean checkLogin(String name_user, String senha) {
 		PreparedStatement st = null;
 		ResultSet rs = null;
 		boolean check = false;
@@ -158,5 +150,42 @@ public class LoginScreenController {
 		}
 		return check;
 	}
-
+	
+	public User Login() {
+		PreparedStatement st = null;
+		ResultSet rs = null;
+		try {
+			st = conn.prepareStatement(
+				"SELECT * FROM cliente WHERE name_user = ?");
+			st.setString(1, tfUsuario.getText());
+			rs = st.executeQuery();
+			
+			if (rs.next()) {
+				
+				User obj = new User();
+				obj.setId(rs.getInt("Id"));
+				obj.setName(rs.getString("name"));
+				obj.setName_user(rs.getString("name_user"));
+				obj.setSenha(rs.getString("senha"));
+				obj.setEmail(rs.getString("email"));
+				obj.setRua(rs.getString("rua"));
+				obj.setNumero(rs.getInt("numero"));
+				obj.setComplemento(rs.getString("complemento"));
+				
+				return obj;
+			}
+			return null;
+		}
+		catch (SQLException e) {
+			throw new DbException(e.getMessage());
+		}
+		finally {
+			DB.closeStatement(st);
+			DB.closeResultSet(rs);
+		}
+	}
+	
+	public static String loginClient() {
+		return saveLogin;
+	}
 }

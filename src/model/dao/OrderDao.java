@@ -11,4 +11,7 @@ public interface OrderDao {
 	void deleteById(Integer id);
 	ClientOrder findById(Integer id);
 	List<ClientOrder> findAll();
+	Double OrderSum(int Id);
+	Integer OrderIdClient(String login);
+	void deleteByPedido(int Id);
 }

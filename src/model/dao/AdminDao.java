@@ -14,4 +14,5 @@ public interface AdminDao {
 		boolean findByName(String name);
 		Admin findById(Integer id);
 		List<Admin> findAll();
+		List<Admin> findAllNameUser();
 }

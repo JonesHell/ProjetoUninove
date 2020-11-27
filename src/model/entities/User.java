@@ -15,11 +15,13 @@ public class User implements Serializable {
 	private String complemento;
 	private Integer numero;
 	
-	public User () {
+	public User() {
 		
 	}
-
 	
+	public User (User user) {
+		
+	}
 
 	public User(Integer id, String name, String senha, String name_user, String email, String rua, String complemento, Integer numero) {
 

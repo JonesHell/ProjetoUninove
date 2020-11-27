@@ -24,6 +24,11 @@
                     <MenuItem fx:id="menuItemAbout" mnemonicParsing="false" onAction="#onMenuItemAboutAction" text="About" />
                   </items>
                 </Menu>
+                  <Menu mnemonicParsing="false" text="Configuration">
+                     <items>
+                        <MenuItem fx:id="menuItemDeslog" mnemonicParsing="false" onAction="#onMenuItemDeslogACtion" text="Deslogar" />
+                     </items>
+                  </Menu>
               </menus>
             </MenuBar>
          </children>

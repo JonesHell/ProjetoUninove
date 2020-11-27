@@ -29,4 +29,8 @@ private UserDao dao = DaoFactory.createUserDao();
 	public boolean findByName(String name) {
 		return findByName(name);
 	}
+	
+	public User findByNameUser(String login) {
+		return dao.findByNameUser(login);
+	}
 }
